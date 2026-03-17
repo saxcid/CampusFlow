@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-r)#n@0pm(ut5rbgf2+k9x6uwvc1yx=m7%0^iz8--i2yth2ws7d'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['localhost','127.0.0.1','campusflow.amidev.bi']
 
 
 # Application definition
@@ -68,6 +68,7 @@ CORS_ALLOW_ALL_ORIGINS= True
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -76,6 +77,15 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+# Configuration des fichiers statiques
+STATIC_URL = '/static/'
+STATIC_ROOT = '/home/amidevbi/campusflow.amidev.bi/static'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# Configuration des fichiers média
+MEDIA_URL = '/media/'
+MEDIA_ROOT = '/home/amidevbi/campusflow.amidev.bi/media'
 
 ROOT_URLCONF = 'CampusFlow.urls'
 
